@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            padding: 30px 40px 40px 40px;
+        }
+
+        /* Typography */
+        .text-bold { font-weight: 700; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+
+        .text-sm { font-size: 10pt; }
+        .text-md { font-size: 11pt; }
+        .text-lg { font-size: 12pt; }
+        .text-xl { font-size: 13pt; }
+        .text-2xl { font-size: 16pt; }
+        .text-3xl { font-size: 20pt; }
+        .text-4xl { font-size: 26pt; }
+
+        .mt-2 { margin-top: 20px; }
+        .mb-2 { margin-bottom: 20px; }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            position: running(header);
+            width: 100%;
+            padding-top: 50px;
+            padding-left: 40px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+        /* Tables */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table-2 {
+            border-collapse: collapse;
+        }
+
+        .table-header {
+            background-color: #fdfcf7;
+        }
+
+        .table-cell {
+            padding: 5pt;
+        }
+
+        .table-cell-border-bottom {
+            border-bottom: 1px solid #88888b;
+        }
+        
+        .table-cell-border-top {
+            border-top: 1px solid #88888b;
+        }
+
+        .table-cell-no-border {
+            padding: 5pt;
+        }
+
+        /* Invoice Specific */
+        .invoice-header {
+            margin-bottom: 30px;
+        }
+
+        .invoice-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .invoice-subtitle {
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .invoice-info {
+            margin-bottom: 20px;
+        }
+
+        .invoice-info-label {
+            width: 70pt;
+            font-size: 13px;
+        }
+
+        .invoice-info-separator {
+            width: 10pt;
+            font-size: 13px;
+        }
+
+        .invoice-info-value {
+            width: 200pt;
+            font-size: 13px;
+        }
+
+        .invoice-total {
+            margin-top: 20px;
+        }
+
+        .invoice-footer {
+            margin-top: 30px;
+        }
+
+        /* Page Setup */
+        @page {
+            @top-center {
+                content: element(header);
+            }
+            @bottom-right {
+                font-size: 10px;
+                padding: 20px 40px 50px 40px;
+                font-family: 'Open Sans', sans-serif;
+                content: "Invoice ini diterbitkan secara elektronik oleh PT. RONE ESTATE GROUP, memenuhi persyaratan hukum tentang dokumen dan tanda tangan elektronik, difasilitasi oleh PT PRIVY IDENTITAS DIGITAL (privy.id) sebagai PSrE resmi yang diakui Kemenkominfo RI. Dokumen ini sah secara hukum dan dapat diverifikasi dengan memindai QR Code pada dokumen.";
+            }
+            margin: 160px 0 125px 0;
+            background: url('assets/template-itext/invoice/images/image2.png') no-repeat bottom left;
+            background-size: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <table class="table-2">
+            <tr>
+                <td style="width: 120px;margin: 0; padding: 0;">
+                    <img src="assets/template-itext/invoice/images/image1.png" alt="Logo" style="width: 120px;">
+                </td>
+                <td class="table-cell-no-border" style="width: 250pt;">
+                    <p class="text-bold text-2xl text-left">PT. RONE ESTATE GROUP</p>
+                    <p class="text-sm text-left">Jl. Soekarno Hatta No. 123, Jakarta</p>
+                    <p class="text-sm text-left">Cikarang, Bekasi</p>
+                    <p class="text-sm text-left">Telp : 021-2111111</p>
+                </td>
+                <td class="table-cell-no-border" style="width: 200pt;">
+                    <p class="invoice-title">INVOICE</p>
+                    <p class="invoice-subtitle">No: {{invoice_no}} | Date : 11 Sep 2025</p>
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <div class="grid grid-2">
+        <div class="invoice-info">
+            <table class="table">
+                <tr>
+                    <td class="invoice-info-label">To</td>
+                    <td class="invoice-info-separator">:</td>
+                    <td class="invoice-info-value">Toro</td>
+                </tr>
+                <tr>
+                    <td class="invoice-info-label">Address</td>
+                    <td class="invoice-info-separator">:</td>
+                    <td class="invoice-info-value">Jl. Soekarno</td>
+                </tr>
+                <tr>
+                    <td class="invoice-info-label">NPWP</td>
+                    <td class="invoice-info-separator">:</td>
+                    <td class="invoice-info-value">01.338.618.0-091.000</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="invoice-info">
+            <table class="table">
+                <tr>
+                    <td class="invoice-info-label">Currency</td>
+                    <td class="invoice-info-separator">:</td>
+                    <td class="invoice-info-value">IDR</td>
+                </tr>
+                <tr>
+                    <td class="invoice-info-label">Contract Date</td>
+                    <td class="invoice-info-separator">:</td>
+                    <td class="invoice-info-value">13 Mei 2001</td>
+                </tr>
+                <tr>
+                    <td class="invoice-info-label">Contract Reff</td>
+                    <td class="invoice-info-separator">:</td>
+                    <td class="invoice-info-value">Yan Sommer</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td class="table-cell table-cell-border-bottom table-cell-border-top table-header text-sm" rowspan="2">No</td>
+                <td class="table-cell table-cell-border-bottom table-cell-border-top table-header text-sm" rowspan="2">Material Name</td>
+                <td class="table-cell table-cell-border-bottom table-cell-border-top table-header text-sm" rowspan="2">QTY</td>
+                <td class="table-cell table-cell-border-top table-header text-center text-sm" colspan="2">Harga jual/pergantian/ uang muka /termin</td>
+            </tr>
+            <tr>
+                <td class="table-cell table-cell-border-bottom table-header text-right text-sm">USD</td>
+                <td class="table-cell table-cell-border-bottom table-header text-right text-sm">IDR</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{item_rows}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="table-cell-no-border" colspan="3">
+                    <p class="text-right text-sm">Dasar Pengenaan Pajak</p>
+                </td>
+                <td class="table-cell-no-border text-right text-sm">1.242.344</td>
+                <td class="table-cell-no-border text-right text-sm">4.123.3434</td>
+            </tr>
+            <tr>
+                <td class="table-cell-no-border" colspan="3">
+                    <p class="text-right text-sm">PPN = 11% x Dasar Pengenaan Pajak</p>
+                </td>
+                <td class="table-cell-no-border text-right text-sm">1.242.344</td>
+                <td class="table-cell-no-border text-right text-sm">4.123.3434</td>
+            </tr>
+            <tr>
+                <td class="table-cell-no-border" colspan="3">
+                    <p class="text-right text-bold text-sm">Grand Total</p>
+                </td>
+                <td class="table-cell-no-border text-right text-sm">1.242.344</td>
+                <td class="table-cell-no-border text-right text-sm">4.123.3434</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="mt-2 mb-2">
+        <p class="text-sm"><span class="text-bold">Terbilang :</span> Empat Juta Empat Ratus Ribu Rupiah</p>
+    </div>
+
+    <div class="invoice-footer">
+        <table class="table">
+            <tr>
+                <td class="table-cell-no-border" style="width: 400pt;">
+                    <p class="text-bold text-md">Petunjuk Pembayaran:</p>
+                    <p class="text-bold text-md">BANK MANDIRI</p>
+                    <p class="text-bold text-md">PT. RONE ESTATE GROUP</p>
+                    <p class="text-bold text-md">IDR 1250051213131</p>
+                </td>
+                <td class="table-cell-no-border">
+                    <p class="text-sm">Jakarta, 11 Sep 2025</p>
+                    <p class="text-bold text-md">Approved by :</p>
+                    <p class="text-bold text-md">Dani</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
