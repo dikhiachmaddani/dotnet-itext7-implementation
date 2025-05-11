@@ -24,7 +24,7 @@ The solution consists of 5 projects:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/invoice-generator.git
+   git clone https://github.com/dikhiachmaddani/dotnet-itext7-implementation.git
    ```
 
 2. Navigate to the project directory:
@@ -61,14 +61,6 @@ The solution consists of 5 projects:
 ### Invoice Endpoints
 
 - `POST /api/invoice/generate` - Create new invoice
-
-## PDF Template Customization
-
-Templates are stored in the `Templates` folder and can be customized:
-
-1. Edit the HTML templates in the `Templates` directory
-2. Use placeholders like `{{CompanyName}}`, `{{InvoiceNumber}}`, etc.
-3. Style using CSS within the template
 
 ## Dependency Injection
 
